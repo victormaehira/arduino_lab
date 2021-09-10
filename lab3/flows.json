@@ -1,0 +1,942 @@
+[
+    {
+        "id": "97e81de72b38a73b",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "81510a37.b6e2c8",
+        "type": "tab",
+        "label": "Arduino",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "61b674a31f2c26f8",
+        "type": "tab",
+        "label": "MQQTT",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "94e2bea402b4bdb3",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ab75875b4b7ff617",
+        "type": "serial-port",
+        "serialport": "COM3",
+        "serialbaud": "57600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "f7f1ebc3162c1bf4",
+        "type": "ui_group",
+        "name": "Disponivel",
+        "tab": "379954ab132d242d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fb0c511e0091b199",
+        "type": "ui_group",
+        "name": "Acionado",
+        "tab": "379954ab132d242d",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "379954ab132d242d",
+        "type": "ui_tab",
+        "name": "Dispenser Quarto",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d4d174f8de67051a",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "7f726dd0ad117e88",
+        "type": "mongodb3",
+        "uri": "mongodb+srv://root:root@cluster0.ahb4o.mongodb.net/AulaFIAP?retryWrites=true&w=majority",
+        "name": "AulaFIAP NodeREDBrasil",
+        "options": "",
+        "parallelism": "-1"
+    },
+    {
+        "id": "82f8c6c1dd2e0b80",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.mqttdashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "963aee223865b60a",
+        "type": "serial in",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "serial": "ab75875b4b7ff617",
+        "x": 70,
+        "y": 300,
+        "wires": [
+            [
+                "708bec76df7ffb51"
+            ]
+        ]
+    },
+    {
+        "id": "0dd0b5256c35e1b3",
+        "type": "debug",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "708bec76df7ffb51",
+        "type": "json",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 230,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b69c154018bf3319",
+        "type": "change",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.horario",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "move",
+                "p": "contador",
+                "pt": "flow",
+                "to": "payload.contador",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "dispenser",
+                "pt": "flow",
+                "to": "payload.dispenser",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 300,
+        "wires": [
+            [
+                "7718d4f0336a6b09",
+                "eafd2cbf4c693baa"
+            ]
+        ]
+    },
+    {
+        "id": "91d1ccbe40a00f3c",
+        "type": "inject",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 80,
+        "wires": [
+            [
+                "c13d02dbc57ab2d3"
+            ]
+        ]
+    },
+    {
+        "id": "c13d02dbc57ab2d3",
+        "type": "change",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "dispenser",
+                "pt": "flow",
+                "to": "50",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "contador",
+                "pt": "flow",
+                "to": "380",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7718d4f0336a6b09",
+        "type": "calculator",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "inputMsgField": "payload.contador",
+        "outputMsgField": "payload.contador",
+        "operation": "inc",
+        "constant": "1",
+        "round": false,
+        "decimals": 0,
+        "x": 540,
+        "y": 300,
+        "wires": [
+            [
+                "9ed38ee05f2ca450"
+            ]
+        ]
+    },
+    {
+        "id": "9ed38ee05f2ca450",
+        "type": "change",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.contador",
+                "pt": "msg",
+                "to": "contador",
+                "tot": "flow"
+            },
+            {
+                "t": "move",
+                "p": "payload.dispenser",
+                "pt": "msg",
+                "to": "dispenser",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 300,
+        "wires": [
+            [
+                "0dd0b5256c35e1b3"
+            ]
+        ]
+    },
+    {
+        "id": "eafd2cbf4c693baa",
+        "type": "calculator",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "inputMsgField": "payload.dispenser",
+        "outputMsgField": "payload.porcentagem",
+        "operation": "mult",
+        "constant": "100",
+        "round": false,
+        "decimals": 0,
+        "x": 440,
+        "y": 380,
+        "wires": [
+            [
+                "ec10dc3894a1d66c"
+            ]
+        ]
+    },
+    {
+        "id": "ec10dc3894a1d66c",
+        "type": "calculator",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "inputMsgField": "payload.porcentagem",
+        "outputMsgField": "payload.porcentagem",
+        "operation": "div",
+        "constant": "400",
+        "round": false,
+        "decimals": 0,
+        "x": 590,
+        "y": 380,
+        "wires": [
+            [
+                "144c7905e57e5d40"
+            ]
+        ]
+    },
+    {
+        "id": "144c7905e57e5d40",
+        "type": "calculator",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "inputMsgField": "payload.dispenser",
+        "outputMsgField": "payload.dispenser",
+        "operation": "dec",
+        "constant": "1",
+        "round": false,
+        "decimals": 0,
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "b1e9d86e4bba5918",
+                "360bb7fd8929f47f"
+            ]
+        ]
+    },
+    {
+        "id": "b1e9d86e4bba5918",
+        "type": "change",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.dispenser",
+                "pt": "msg",
+                "to": "dispenser",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 380,
+        "wires": [
+            [
+                "0dd0b5256c35e1b3",
+                "6d27d9a8764f0f29",
+                "55ad15e1fa50e033"
+            ]
+        ]
+    },
+    {
+        "id": "6d27d9a8764f0f29",
+        "type": "ui_gauge",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "group": "f7f1ebc3162c1bf4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "gauge",
+        "label": " %",
+        "format": "{{payload.porcentagem}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b30000",
+            "#e6e600",
+            "#59cb3a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1270,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "532bfaa5bfdd4913",
+        "type": "ui_gauge",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "group": "fb0c511e0091b199",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Acionamentos",
+        "label": "",
+        "format": "{{payload.contador}}",
+        "min": 0,
+        "max": "400",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 880,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "360bb7fd8929f47f",
+        "type": "change",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.contador",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 540,
+        "wires": [
+            [
+                "532bfaa5bfdd4913"
+            ]
+        ]
+    },
+    {
+        "id": "55ad15e1fa50e033",
+        "type": "switch",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "property": "payload.porcentagem",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "10",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1090,
+        "y": 480,
+        "wires": [
+            [
+                "32715f21a4de4f7f"
+            ]
+        ]
+    },
+    {
+        "id": "32715f21a4de4f7f",
+        "type": "template",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Dispenser do quarto esgotado, favor efetuar a troca.",
+        "output": "str",
+        "x": 1220,
+        "y": 480,
+        "wires": [
+            [
+                "14597afab29e65fe"
+            ]
+        ]
+    },
+    {
+        "id": "14597afab29e65fe",
+        "type": "ui_audio",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "group": "f7f1ebc3162c1bf4",
+        "voice": "pt-BR",
+        "always": "",
+        "x": 1380,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "db6278600afd1938",
+        "type": "debug",
+        "z": "94e2bea402b4bdb3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "aa5b3b66789c144c",
+        "type": "ui_gauge",
+        "z": "94e2bea402b4bdb3",
+        "name": "",
+        "group": "f7f1ebc3162c1bf4",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "donut",
+        "title": "gauge",
+        "label": " %",
+        "format": "{{payload.porcentagem}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b30000",
+            "#e6e600",
+            "#59cb3a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 1310,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "f6ba9d4b5bc3b117",
+        "type": "switch",
+        "z": "94e2bea402b4bdb3",
+        "name": "",
+        "property": "payload.porcentagem",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "10",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 600,
+        "wires": [
+            [
+                "de02f0805acfd4a0"
+            ]
+        ]
+    },
+    {
+        "id": "de02f0805acfd4a0",
+        "type": "template",
+        "z": "94e2bea402b4bdb3",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Dispenser do quarto esgotado, favor efetuar a troca.",
+        "output": "str",
+        "x": 1260,
+        "y": 600,
+        "wires": [
+            [
+                "69a37bf2d12f9f2f"
+            ]
+        ]
+    },
+    {
+        "id": "69a37bf2d12f9f2f",
+        "type": "ui_audio",
+        "z": "94e2bea402b4bdb3",
+        "name": "",
+        "group": "f7f1ebc3162c1bf4",
+        "voice": "pt-BR",
+        "always": "",
+        "x": 1420,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "25f9208798ed6715",
+        "type": "serial in",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "serial": "ab75875b4b7ff617",
+        "x": 110,
+        "y": 680,
+        "wires": [
+            [
+                "674ab5ddd690d89a"
+            ]
+        ]
+    },
+    {
+        "id": "674ab5ddd690d89a",
+        "type": "json",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 250,
+        "y": 700,
+        "wires": [
+            [
+                "3dbc6576c8c9a90f"
+            ]
+        ]
+    },
+    {
+        "id": "9842c68c3de36275",
+        "type": "mongodb3 in",
+        "z": "81510a37.b6e2c8",
+        "service": "_ext_",
+        "configNode": "7f726dd0ad117e88",
+        "name": "",
+        "collection": "BootcampFIAP",
+        "operation": "findOne",
+        "x": 750,
+        "y": 700,
+        "wires": [
+            [
+                "b99f295bb715dc9d",
+                "bbef8411cf8b2459",
+                "92c03420b405d97e"
+            ]
+        ]
+    },
+    {
+        "id": "3dbc6576c8c9a90f",
+        "type": "template",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"deviceUUID\":\"{{payload.deviceUUID}}\"}\n",
+        "output": "json",
+        "x": 400,
+        "y": 700,
+        "wires": [
+            [
+                "9842c68c3de36275"
+            ]
+        ]
+    },
+    {
+        "id": "bbef8411cf8b2459",
+        "type": "debug",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "b99f295bb715dc9d",
+        "type": "change",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.porcentagem",
+                "pt": "msg",
+                "to": "payload.porcentagem-0.25",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.contador",
+                "pt": "msg",
+                "to": "payload.contador+1",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "payload.horario",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 700,
+        "wires": [
+            [
+                "b210a5e94aabdf65"
+            ]
+        ]
+    },
+    {
+        "id": "b210a5e94aabdf65",
+        "type": "mongodb3 in",
+        "z": "81510a37.b6e2c8",
+        "service": "_ext_",
+        "configNode": "7f726dd0ad117e88",
+        "name": "",
+        "collection": "BootcampFIAP",
+        "operation": "save",
+        "x": 700,
+        "y": 820,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "92c03420b405d97e",
+        "type": "mqtt out",
+        "z": "81510a37.b6e2c8",
+        "name": "",
+        "topic": "BootcampVictor",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "82f8c6c1dd2e0b80",
+        "x": 1150,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "49d1812b46ca2c3a",
+        "type": "mqtt in",
+        "z": "61b674a31f2c26f8",
+        "name": "",
+        "topic": "BootcampFernando",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "82f8c6c1dd2e0b80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 380,
+        "y": 240,
+        "wires": [
+            [
+                "1df763d373deae87"
+            ]
+        ]
+    },
+    {
+        "id": "33fa24f28c0f6e3d",
+        "type": "mqtt in",
+        "z": "61b674a31f2c26f8",
+        "name": "",
+        "topic": "BootcampVictor",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "82f8c6c1dd2e0b80",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 360,
+        "y": 340,
+        "wires": [
+            [
+                "1df763d373deae87"
+            ]
+        ]
+    },
+    {
+        "id": "1df763d373deae87",
+        "type": "debug",
+        "z": "61b674a31f2c26f8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 320,
+        "wires": []
+    }
+]
