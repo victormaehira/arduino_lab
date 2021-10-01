@@ -1,0 +1,564 @@
+{
+  "intents": [
+    {
+      "intent": "saudacao",
+      "examples": [
+        {
+          "text": "Boa noite"
+        },
+        {
+          "text": "Boa tarde"
+        },
+        {
+          "text": "bom dia"
+        },
+        {
+          "text": "e ai"
+        },
+        {
+          "text": "fala ai"
+        },
+        {
+          "text": "hey"
+        },
+        {
+          "text": "oi"
+        },
+        {
+          "text": "ola"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "sobre",
+      "examples": [
+        {
+          "text": "o que é"
+        },
+        {
+          "text": "o que é a fiap"
+        },
+        {
+          "text": "qual o"
+        },
+        {
+          "text": "quem é"
+        },
+        {
+          "text": "sobre"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "boasVindas",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Boa noite",
+          "synonyms": [
+            "good night"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Boa tarde",
+          "synonyms": [
+            "Buenas tardes"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bom dia",
+          "synonyms": [
+            "bon jour",
+            "bonjour",
+            "buenos dias",
+            "good morning"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sobre",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "contato",
+          "synonyms": [
+            "celular",
+            "fax",
+            "ramal",
+            "telefone"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "endereço",
+          "synonyms": [
+            "local",
+            "localidade",
+            "localização",
+            "rua"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "história",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "parceiros",
+          "synonyms": [
+            "parceria"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "premios",
+          "synonyms": [
+            "premiação",
+            "premio"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "unidade",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Aclimação",
+          "synonyms": [
+            "Aclimação"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Alphaville",
+          "synonyms": [
+            "Alphaville"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Paulista",
+          "synonyms": [
+            "Paulista"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Vila Olímpia",
+          "synonyms": [
+            "Vila Olímpia"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Bem-vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá. Como posso te ajudar?"
+              },
+              {
+                "text": "oi"
+              },
+              {
+                "text": "e ai"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_10_1633046316127",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#sobre",
+      "dialog_node": "node_10_1633046316127",
+      "previous_sibling": "node_9_1633044261399"
+    },
+    {
+      "type": "standard",
+      "parent": "node_10_1633046316127",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@unidade",
+      "dialog_node": "node_1_1633047432320"
+    },
+    {
+      "type": "standard",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#saudacao",
+      "dialog_node": "node_9_1633044261399",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Bom dia, seja bem vindo a Fiap. Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1633044261399",
+      "conditions": "@boasVindas:(bom dia)",
+      "dialog_node": "response_1_1633044873325"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Alameda Mamoré, 687 – 16º andar"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1633047432320",
+      "conditions": "@unidade:Alphaville",
+      "dialog_node": "response_1_1633047743781",
+      "previous_sibling": "response_2_1633047722411"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Rua Fidêncio Ramos, 308 – 7º e 8º andares – Torre A"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1633047432320",
+      "conditions": "@unidade:(Vila Olímpia)",
+      "dialog_node": "response_2_1633047722411",
+      "previous_sibling": "response_3_1633047681185"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Av Lins, 13"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1633047432320",
+      "conditions": "@unidade:Aclimação",
+      "dialog_node": "response_2_1633047759838",
+      "previous_sibling": "response_1_1633047743781"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "sou a historia da fiap"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1633046316127",
+      "conditions": "@sobre:história",
+      "dialog_node": "response_3_1633046465311",
+      "previous_sibling": "response_5_1633046345986"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "ibm, etc"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1633046316127",
+      "conditions": "@sobre:parceiros",
+      "dialog_node": "response_3_1633046893911",
+      "previous_sibling": "response_3_1633046465311"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Av Paulista, 123"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1633047432320",
+      "conditions": "@unidade:Paulista",
+      "dialog_node": "response_3_1633047681185"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá, seja bem vindo a Fiap. Como posso te ajudar?"
+              },
+              {
+                "text": "Oi Muito bem vindo a nossa Fiap, Sou a Gabi, posso te ajudar em alguma coisa?"
+              },
+              {
+                "text": "Sou a Gabi, Assistente Virtual da Fiap. Posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_9_1633044261399",
+      "conditions": "anything_else",
+      "dialog_node": "response_4_1633044799532",
+      "previous_sibling": "response_9_1633044987657"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "https://s3.amazonaws.com/wpfiap/wp-content/uploads/2015/10/materia2.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_10_1633046316127",
+      "conditions": "@sobre:premios",
+      "dialog_node": "response_5_1633046345986",
+      "previous_sibling": "node_1_1633047432320"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "Qual campus você quer?",
+            "options": [
+              {
+                "label": "Paulista",
+                "value": {
+                  "input": {
+                    "text": "paulista"
+                  }
+                }
+              },
+              {
+                "label": "vila olimpia",
+                "value": {
+                  "input": {
+                    "text": "vila olimpia"
+                  }
+                }
+              },
+              {
+                "label": "Alphaville",
+                "value": {
+                  "input": {
+                    "text": "Alphaville"
+                  }
+                }
+              },
+              {
+                "label": "Aclimação",
+                "value": {
+                  "input": {
+                    "text": "Aclimação"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_10_1633046316127",
+      "conditions": "@sobre:endereço",
+      "dialog_node": "response_5_1633047188016",
+      "previous_sibling": "response_3_1633046893911"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Bom tarde, seja bem vindo a Fiap. Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1633044261399",
+      "conditions": "@boasVindas:(Boa tarde)",
+      "dialog_node": "response_6_1633044938077",
+      "previous_sibling": "response_1_1633044873325"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Fiap eh uma facu"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_10_1633046316127",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1633048135312",
+      "previous_sibling": "response_5_1633047188016"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Bom noite, seja bem vindo a Fiap. Como posso te ajudar?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_9_1633044261399",
+      "conditions": "@boasVindas:(Boa noite)",
+      "dialog_node": "response_9_1633044987657",
+      "previous_sibling": "response_6_1633044938077"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Conhecimentos Fiap Victor",
+  "language": "pt-br",
+  "description": ""
+}
