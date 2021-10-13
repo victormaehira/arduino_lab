@@ -1,0 +1,821 @@
+[
+    {
+        "id": "7c7ac942eb6092b7",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ad78ecd5ba55a98b",
+        "type": "watson-assistant-v2",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/4c322cf8-9094-44c3-a937-efddfa76a9e6",
+        "assistant_id": "e645029c-8db8-49cc-8eb6-17b6ef7df5ce",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": true,
+        "timeout": "",
+        "optout-learning": false,
+        "persist-session-id": false,
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "0a785b8982c96b01",
+                "a25829efbccb2b12"
+            ]
+        ]
+    },
+    {
+        "id": "95867c9a0194b82d",
+        "type": "debug",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "30b934b4ce8d6f4d",
+        "type": "inject",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "params.session_id",
+                "v": "victor",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "bom dia",
+        "payloadType": "str",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0a785b8982c96b01",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "watson",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "telegram",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "watson.output.generic[0].text",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 240,
+        "wires": [
+            [
+                "be8c84b8848d4b34"
+            ]
+        ]
+    },
+    {
+        "id": "1662b9cd62e1d8f3",
+        "type": "telegram receiver",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "bot": "845a63c7e3487f1f",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "f3acdd6ee943971f"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "955b768409967f2f",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "telegram",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "telegram.content",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "params.session_id",
+                "pt": "msg",
+                "to": "Victor",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "ad78ecd5ba55a98b"
+            ]
+        ]
+    },
+    {
+        "id": "be8c84b8848d4b34",
+        "type": "telegram sender",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "bot": "845a63c7e3487f1f",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1330,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3acdd6ee943971f",
+        "type": "switch",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "property": "payload.type",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "message",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "voice",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 380,
+        "wires": [
+            [
+                "955b768409967f2f"
+            ],
+            [
+                "4b0495c45f175761"
+            ]
+        ]
+    },
+    {
+        "id": "4b0495c45f175761",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "telegram",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "telegram.weblink",
+                "pt": "msg",
+                "to": "url",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "params.session_id",
+                "pt": "msg",
+                "to": "Victor",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 460,
+        "wires": [
+            [
+                "8980d1346ae9138e"
+            ]
+        ]
+    },
+    {
+        "id": "8980d1346ae9138e",
+        "type": "http request",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "0317dcaa0f90d042"
+            ]
+        ]
+    },
+    {
+        "id": "0317dcaa0f90d042",
+        "type": "watson-speech-to-text",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "alternatives": 1,
+        "speakerlabels": true,
+        "smartformatting": false,
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "custom-weight": "0.5",
+        "band": "BroadbandModel",
+        "bandhidden": "",
+        "keywords": "",
+        "keywords-threshold": "0.5",
+        "word-confidence": false,
+        "password": "",
+        "apikey": "gBCEvMoEYVXV0j1vLaPPb3hRbRZx8Aex3pp9lDYLCFB0",
+        "payload-response": true,
+        "streaming-mode": false,
+        "streaming-mute": true,
+        "auto-connect": false,
+        "discard-listening": false,
+        "disable-precheck": false,
+        "service-endpoint": "https://api.au-syd.speech-to-text.watson.cloud.ibm.com/instances/16ca3302-d82d-4492-9095-7f29ab8118d7",
+        "x": 840,
+        "y": 460,
+        "wires": [
+            [
+                "c26486f87673c5f1"
+            ]
+        ]
+    },
+    {
+        "id": "c26486f87673c5f1",
+        "type": "watson-assistant-v2",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "service-endpoint": "https://api.us-south.assistant.watson.cloud.ibm.com/instances/4c322cf8-9094-44c3-a937-efddfa76a9e6",
+        "assistant_id": "e645029c-8db8-49cc-8eb6-17b6ef7df5ce",
+        "debug": false,
+        "restart": false,
+        "return_context": true,
+        "alternate_intents": false,
+        "multisession": true,
+        "timeout": "",
+        "optout-learning": false,
+        "persist-session-id": false,
+        "x": 1030,
+        "y": 460,
+        "wires": [
+            [
+                "0648da3949f58025",
+                "a25829efbccb2b12"
+            ]
+        ]
+    },
+    {
+        "id": "0648da3949f58025",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "watson",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "watson.output.generic[0].text",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 600,
+        "wires": [
+            [
+                "53d51862c5aedc40"
+            ]
+        ]
+    },
+    {
+        "id": "53d51862c5aedc40",
+        "type": "watson-text-to-speech",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "voice": "pt-BR_IsabelaV3Voice",
+        "voicehidden": "pt-BR_IsabelaV3Voice",
+        "format": "audio/ogg; codecs=opus",
+        "password": "",
+        "apikey": "VzHPdDFLLRHy0z4lrCFIgP_8-Mn8Y5tjfr6V1ZZNqmNw",
+        "payload-response": true,
+        "service-endpoint": "https://api.au-syd.text-to-speech.watson.cloud.ibm.com/instances/046864cc-8320-4ad2-b734-7f192397a46b",
+        "x": 810,
+        "y": 620,
+        "wires": [
+            [
+                "ec9e0ff63ce2bdbe"
+            ]
+        ]
+    },
+    {
+        "id": "ec9e0ff63ce2bdbe",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "audio",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "telegram",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "move",
+                "p": "audio",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1070,
+        "y": 640,
+        "wires": [
+            [
+                "95867c9a0194b82d",
+                "be8c84b8848d4b34"
+            ]
+        ]
+    },
+    {
+        "id": "a25829efbccb2b12",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload.output.intents[0].intent",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 900,
+        "wires": [
+            [
+                "041b7720641853c0",
+                "dc32602810c88635",
+                "8c19ad04ab4318ce",
+                "58dbc993dcf842fc",
+                "717a472eed7921ab",
+                "223d7e3c74b62f22"
+            ]
+        ]
+    },
+    {
+        "id": "041b7720641853c0",
+        "type": "debug",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "dc32602810c88635",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "AcendeSala",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "ApagaSala",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 760,
+        "wires": [
+            [
+                "4712076e1e6b6f78"
+            ]
+        ]
+    },
+    {
+        "id": "8c19ad04ab4318ce",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "acendeQuarto",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "apagaquarto",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 820,
+        "wires": [
+            [
+                "1fea498457a1df65"
+            ]
+        ]
+    },
+    {
+        "id": "58dbc993dcf842fc",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "acendeBanheiro",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "apagabanheiro",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 880,
+        "wires": [
+            [
+                "e763e4ceba396d7b"
+            ]
+        ]
+    },
+    {
+        "id": "717a472eed7921ab",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "apagaCozinha",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "acendeCozinha",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 940,
+        "wires": [
+            [
+                "159c8b0af880fc0c"
+            ]
+        ]
+    },
+    {
+        "id": "223d7e3c74b62f22",
+        "type": "change",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "acendeQuartodeHospedes",
+                "fromt": "str",
+                "to": "0",
+                "tot": "str"
+            },
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "apagaQuartoDeHospedes",
+                "fromt": "str",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 1000,
+        "wires": [
+            [
+                "df563aff2b3fbbd8"
+            ]
+        ]
+    },
+    {
+        "id": "1fea498457a1df65",
+        "type": "mqtt out",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "topic": "Alicia-Quarto-Fernando",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "82f8c6c1dd2e0b80",
+        "x": 1390,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "4712076e1e6b6f78",
+        "type": "mqtt out",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "topic": "Alicia-Sala-Fernando",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "82f8c6c1dd2e0b80",
+        "x": 1360,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "e763e4ceba396d7b",
+        "type": "mqtt out",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "topic": "Alicia-Banheiro-Fernando",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "82f8c6c1dd2e0b80",
+        "x": 1370,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "159c8b0af880fc0c",
+        "type": "mqtt out",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "topic": "Alicia-Cozinha-Fernando",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "82f8c6c1dd2e0b80",
+        "x": 1370,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "df563aff2b3fbbd8",
+        "type": "mqtt out",
+        "z": "7c7ac942eb6092b7",
+        "name": "",
+        "topic": "Alicia-QuartoDeHospedes-Fernando",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "82f8c6c1dd2e0b80",
+        "x": 1410,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "845a63c7e3487f1f",
+        "type": "telegram bot",
+        "botname": "BootcampFiap",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "82f8c6c1dd2e0b80",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.mqttdashboard.com",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]
